@@ -1,0 +1,21 @@
+- hosts: servers
+  sudo: yes
+  tasks:
+    - name: be sure nodejs is installed
+      yum: name=nodejs state=latest
+
+    - name: be sure npm is installed
+      yum: name=npm state=latest
+
+    - name: be sure libevent-devel is installed
+      yum: name=libevent-devel state=latest
+
+    - name: be sure coffee-script is installed
+      npm: global=yes name=coffee-script state=latest
+
+    - name: be sure hubot is installed
+      npm: global=yes name=hubot state=latest
+
+    - name: be sure myhubot is created
+      command: hubot --create myhubot
+
